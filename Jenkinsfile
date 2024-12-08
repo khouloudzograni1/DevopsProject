@@ -40,6 +40,14 @@ pipeline {
                 archiveArtifacts artifacts: 'target/eventsProject-1.0.0-SNAPSHOT.jar', fingerprint: true
             }
         }
+         stage('Deploy to Nexus') {
+                    steps {
+                        script {
+                            // Exécuter la commande Maven deploy pour envoyer l'artefact vers Nexus
+                            sh "mvn clean deploy -DskipTests"
+                        }
+                    }
+                }
 /*
         stage('Publish to Nexus') {
             steps {
