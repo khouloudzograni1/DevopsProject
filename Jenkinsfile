@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Récupération du projet de Git') {
             steps {
-                git branch: 'KhouloudZograni_5DS4',
+                git branch: 'khouloudZograni_5DS4',
                     url: 'https://github.com/khouloudzograni1/DevopsProject.git'
             }
         }
