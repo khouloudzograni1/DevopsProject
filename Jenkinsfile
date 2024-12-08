@@ -37,14 +37,14 @@ pipeline {
 
         stage('Archive Artifacts') {
             steps {
-                archiveArtifacts artifacts: 'target/eventsProject-1.0.0.jar', fingerprint: true
+                archiveArtifacts artifacts: 'target/eventsProject-1.0.0-SNAPSHOT.jar', fingerprint: true
             }
         }
 /*
         stage('Publish to Nexus') {
             steps {
                 nexusArtifactUploader artifacts: [
-                    [artifactId: 'eventsProject', classifier: '', file: 'target/eventsProject-1.0.0.jar', type: 'jar']
+                    [artifactId: 'eventsProject', classifier: '', file: 'target/eventsProject-1.0.0-SNAPSHOT.jar', type: 'jar']
                 ],
                 credentialsId: 'nexus-auth',
                 groupId: 'tn.esprit.eventsProject',
