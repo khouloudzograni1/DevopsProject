@@ -34,13 +34,13 @@ pipeline {
                 }
             }
         }
-/*
+
         stage('Archive Artifacts') {
             steps {
                 archiveArtifacts artifacts: 'target/eventsProject-1.0.0.jar', fingerprint: true
             }
         }
-
+/*
         stage('Publish to Nexus') {
             steps {
                 nexusArtifactUploader artifacts: [
