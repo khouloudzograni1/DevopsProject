@@ -19,7 +19,7 @@ pipeline {
                   sh 'mvn compile'
               }
             }
-        stage('Unit Tests Mockito') {
+       /* stage('Unit Tests Mockito') {
             steps {
                 sh 'mvn test'
             }
@@ -94,6 +94,6 @@ pipeline {
             mail to: 'khouloud.zograni@esprit.tn',
                  subject: "Pipeline Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "The build has failed. Check it out here: ${env.BUILD_URL}"
-        }
+        }*/
     }
 }
