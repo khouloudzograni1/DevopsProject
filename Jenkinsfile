@@ -24,7 +24,7 @@ pipeline {
                 sh 'mvn test'
             }
         }
-/*
+
         stage('SonarQube Analysis') {
             steps {
                 script {
@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-
+/*
         stage('Archive Artifacts') {
             steps {
                 archiveArtifacts artifacts: 'target/eventsProject-1.0.0.jar', fingerprint: true
