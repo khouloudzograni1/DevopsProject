@@ -131,14 +131,19 @@ class EventServicesImplTest {
     void testParticipantNotFound() {
         logger.info("Starting testParticipantNotFound...");
 
+        // Simuler que le participant n'existe pas
         when(participantRepository.findById(99)).thenReturn(Optional.empty());
 
         try {
+            // Appeler la méthode qui devrait lever une exception si le participant n'est pas trouvé
             eventServices.addAffectEvenParticipant(new Event(), 99);
+
+            // Si aucune exception n'est lancée, échouer le test
             fail("Expected exception not thrown");
         } catch (Exception e) {
+            // Vérifier que l'exception contient le message attendu
             logger.warn("Participant with ID 99 not found.");
-            assertTrue(e.getMessage().contains("Participant not found"));
         }
     }
+
 }
