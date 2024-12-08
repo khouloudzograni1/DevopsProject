@@ -19,12 +19,12 @@ pipeline {
                   sh 'mvn compile'
               }
             }
-       /* stage('Unit Tests Mockito') {
+       stage('Unit Tests Mockito') {
             steps {
                 sh 'mvn test'
             }
         }
-
+/*
         stage('SonarQube Analysis') {
             steps {
                 script {
