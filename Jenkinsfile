@@ -43,8 +43,8 @@ pipeline {
          stage('Deploy to Nexus') {
                     steps {
                         script {
-                            // Exécuter la commande Maven deploy pour envoyer l'artefact vers Nexus
-                            sh "mvn clean deploy -DskipTests"
+                            // mvExécuter la commande Maven deploy pour envoyer l'artefact vers Nexus
+                            sh "mvn clean deploy -x"
                         }
                     }
                 }
