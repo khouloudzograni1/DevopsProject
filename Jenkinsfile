@@ -48,21 +48,7 @@ pipeline {
                         }
                     }
                 }
-/*
-        stage('Publish to Nexus') {
-            steps {
-                nexusArtifactUploader artifacts: [
-                    [artifactId: 'eventsProject', classifier: '', file: 'target/eventsProject-1.0.0-SNAPSHOT.jar', type: 'jar']
-                ],
-                credentialsId: 'nexus-auth',
-                groupId: 'tn.esprit.eventsProject',
-                nexusUrl: '192.168.50.4:8081',
-                nexusVersion: 'nexus3',
-                protocol: 'http',
-                repository: 'projet-spring',
-                version: "1.0"
-            }
-        }
+
 
         stage('Build Docker Image') {
             steps {
@@ -71,6 +57,7 @@ pipeline {
                 sh "docker tag eventsProject:v1.${BUILD_ID} khouloudzograni/eventsProject:latest"
             }
         }
+/*
 
         stage('Push to Docker Hub') {
             steps {
