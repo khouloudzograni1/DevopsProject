@@ -53,10 +53,11 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh "docker build -t eventsproject:v1.${BUILD_ID} ."
-                sh "docker tag eventsProject:v1.${BUILD_ID} khouloudzograni/eventsproject:v1.${BUILD_ID}"
-                sh "docker tag eventsProject:v1.${BUILD_ID} khouloudzograni/eventsproject:latest"
+                sh "docker tag eventsproject:v1.${BUILD_ID} khouloudzograni/eventsproject:v1.${BUILD_ID}"
+                sh "docker tag eventsproject:v1.${BUILD_ID} khouloudzograni/eventsproject:latest"
             }
         }
+
 /*
 
         stage('Push to Docker Hub') {
