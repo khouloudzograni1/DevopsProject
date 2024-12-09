@@ -53,8 +53,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh "docker build -t eventsProject:v1.${BUILD_ID} ."
-                sh "docker tag eventsProject:v1.${BUILD_ID} khouloudzograni/eventsProject:v1.${BUILD_ID}"
-                sh "docker tag eventsProject:v1.${BUILD_ID} khouloudzograni/eventsProject:latest"
+                sh "docker tag eventsProject:v1.${BUILD_ID} khouloudzograni/eventsproject:v1.${BUILD_ID}"
+                sh "docker tag eventsProject:v1.${BUILD_ID} khouloudzograni/eventsproject:latest"
             }
         }
 /*
@@ -63,8 +63,8 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'git_creds', variable: 'docker_hub_cred')]) {
                     sh 'docker login -u khouloudzograni -p ${docker_hub_cred}'
-                    sh 'docker push khouloudzograni/eventsProject:v1.${BUILD_ID}'
-                    sh 'docker push khouloudzograni/eventsProject:latest'
+                    sh 'docker push khouloudzograni/eventsproject:v1.${BUILD_ID}'
+                    sh 'docker push khouloudzograni/eventsproject:latest'
                 }
             }
         }
