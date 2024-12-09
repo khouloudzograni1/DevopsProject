@@ -44,7 +44,7 @@ pipeline {
                     steps {
                         script {
                             // mvExécuter la commande Maven deploy pour envoyer l'artefact vers Nexus
-                            sh "mvn clean deploy -x"
+                            sh "mvn clean deploy -X"
                         }
                     }
                 }
