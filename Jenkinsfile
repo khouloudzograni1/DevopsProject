@@ -52,7 +52,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t eventsProject:v1.${BUILD_ID} ."
+                sh "docker build -t eventsproject:v1.${BUILD_ID} ."
                 sh "docker tag eventsProject:v1.${BUILD_ID} khouloudzograni/eventsproject:v1.${BUILD_ID}"
                 sh "docker tag eventsProject:v1.${BUILD_ID} khouloudzograni/eventsproject:latest"
             }
