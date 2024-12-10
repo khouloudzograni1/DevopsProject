@@ -30,7 +30,9 @@ public class EventServicesImpl implements IEventServices{
     public Participant addParticipant(Participant participant) {
         return participantRepository.save(participant);
     }
-
+    public List<Participant> getAllParticipants() {
+        return participantRepository.findAll();
+    }
     @Override
     public Event addAffectEvenParticipant(Event event, int idParticipant) {
         Participant participant = participantRepository.findById(idParticipant).orElse(null);
