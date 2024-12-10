@@ -1,17 +1,30 @@
-version: '3.8'
+version: '3.8'  # Spécifiez la version de Docker Compose
 
 services:
-  mysql:
-    image: mysql:5.7
+  mysql:  # Nom du service
+    image: mysql:8  # Image MySQL, ici version 8
+    restart: unless-stopped  # Nom du conteneur
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: eventsProject
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root  # Mot de passe root (à remplacer par un mot de passe sécurisé)
+      MYSQL_DATABASE: eventsProject  # Nom de la base de données
     ports:
-      - "3306:3306"
+      - "3306:3306"  # Redirection du port 3306
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql  # Volume pour persister les données
+
+  eventsproject:
+    image: khouloudzograni/eventsproject:latest
+    restart : on-failure
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/eventsProject
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8089:8089"  # Expose the Spring Boot service
+    depends_on:
+      - mysql  # Ensures MySQL starts before Spring Boot app
+    stdin_open: true
+    tty: true
 
 volumes:
   mysql_data:

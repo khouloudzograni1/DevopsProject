@@ -69,15 +69,13 @@ pipeline {
                 }
             }
         }
-/*
         stage('Deploy using Docker Compose') {
             steps {
-                sh 'docker-compose down || true'
-                sh 'docker rm -f mysql || true'
+                sh 'docker-compose down'
                 sh 'docker-compose up -d'
             }
         }
-    }
+    }/*
     post {
         success {
             // Notify on successful build
@@ -90,6 +88,6 @@ pipeline {
             mail to: 'khouloud.zograni@esprit.tn',
                  subject: "Pipeline Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "The build has failed. Check it out here: ${env.BUILD_URL}"
-        }*/
-    }
+        }
+    }*/
 }
