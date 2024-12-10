@@ -145,5 +145,4 @@ class EventServicesImplTest {
             logger.warn("Participant with ID 99 not found.");
         }
     }
-
 }
