@@ -58,18 +58,18 @@ pipeline {
             }
         }
 
-/*
+
 
         stage('Push to Docker Hub') {
             steps {
-                withCredentials([string(credentialsId: 'git_creds', variable: 'docker_hub_cred')]) {
+                withCredentials([string(credentialsId: 'docker_creds', variable: 'docker_hub_cred')]) {
                     sh 'docker login -u khouloudzograni -p ${docker_hub_cred}'
                     sh 'docker push khouloudzograni/eventsproject:v1.${BUILD_ID}'
                     sh 'docker push khouloudzograni/eventsproject:latest'
                 }
             }
         }
-
+/*
         stage('Deploy using Docker Compose') {
             steps {
                 sh 'docker-compose down || true'
