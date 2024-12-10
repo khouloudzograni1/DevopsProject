@@ -22,8 +22,7 @@ public class EventRestController {
     }
     @GetMapping("/getPart")
     public List<Participant> getAllParticipants() {
-        List<Participant> participants = eventServices.getAllParticipants();
-        return participants;
+        return eventServices.getAllParticipants();
     }
     @PostMapping("/addEvent/{id}")
     public Event addEventPart(@RequestBody Event event, @PathVariable("id") int idPart){
