@@ -75,6 +75,12 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
+        stage('Deploy Prometheus and Grafana') {
+                    steps {
+                        sh 'docker-compose up -d prometheus grafana'
+                    }
+                }
+
     }/*
     post {
         success {
