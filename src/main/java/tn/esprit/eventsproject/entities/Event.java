@@ -28,3 +28,4 @@ public class Event implements Serializable {
     private transient Set<Logistics> logistics;
 
 }
+
