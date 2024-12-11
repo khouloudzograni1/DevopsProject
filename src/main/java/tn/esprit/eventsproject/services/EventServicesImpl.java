@@ -26,23 +26,17 @@ public class EventServicesImpl implements IEventServices{
     public Participant addParticipant(Participant participant) {
         return participantRepository.save(participant);
     }
-
     @Override
     public List<Participant> getAllParticipants() {
         return participantRepository.findAll() ;
     }
-
     @Override
     public Event addAffectEvenParticipant(Event event, int idParticipant) {
         // Récupérer le participant, s'il existe
         Participant participant = participantRepository.findById(idParticipant).orElse(null);
-
-        // Vérifier si le participant est null
         if (participant == null) {
             throw new IllegalArgumentException("Participant with ID " + idParticipant + " does not exist.");
         }
-
-        // Ajouter l'événement au participant
         if (participant.getEvents() == null) {
             Set<Event> events = new HashSet<>();
             events.add(event);
@@ -50,27 +44,18 @@ public class EventServicesImpl implements IEventServices{
         } else {
             participant.getEvents().add(event);
         }
-
-        // Sauvegarder l'événement
         return eventRepository.save(event);
     }
-
-
     @Override
     public Event addAffectEvenParticipant(Event event) {
         // Récupérer les participants associés à l'événement
         Set<Participant> participants = event.getParticipants();
-
         for (Participant aParticipant : participants) {
             // Récupérer le participant existant par son ID
             Participant participant = participantRepository.findById(aParticipant.getIdPart()).orElse(null);
-
-            // Vérifier si le participant est null
             if (participant == null) {
                 throw new IllegalArgumentException("Participant with ID " + aParticipant.getIdPart() + " does not exist.");
             }
-
-            // Associer l'événement au participant
             if (participant.getEvents() == null) {
                 Set<Event> events = new HashSet<>();
                 events.add(event);
@@ -78,16 +63,10 @@ public class EventServicesImpl implements IEventServices{
             } else {
                 participant.getEvents().add(event);
             }
-
-            // Sauvegarder les modifications sur le participant
             participantRepository.save(participant);
         }
-
-        // Sauvegarder l'événement mis à jour
         return eventRepository.save(event);
     }
-
-
     @Override
     public Logistics addAffectLog(Logistics logistics, String descriptionEvent) {
       Event event = eventRepository.findByDescription(descriptionEvent);
@@ -102,18 +81,15 @@ public class EventServicesImpl implements IEventServices{
       }
         return logisticsRepository.save(logistics);
     }
-
     @Override
     public List<Logistics> getLogisticsDates(LocalDate dateDebut, LocalDate dateFin) {
         List<Event> events = eventRepository.findByDateDebutBetween(dateDebut, dateFin);
-
         List<Logistics> logisticsList = new ArrayList<>();
         for (Event event:events){
             if(event.getLogistics().isEmpty()){
 
                 return Collections.emptyList();
             }
-
             else {
                 Set<Logistics> logisticsSet = event.getLogistics();
                 for (Logistics logistics:logisticsSet){
