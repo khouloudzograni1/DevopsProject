@@ -23,6 +23,6 @@ public class Participant implements Serializable {
     @Enumerated(EnumType.STRING)
     Tache tache;
     @ManyToMany
-    private transient Set<Event> events;
+    Set<Event> events;
 
 }
