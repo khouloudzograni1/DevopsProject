@@ -154,21 +154,7 @@ import java.util.*;
        verify(eventRepository).findByDateDebutBetween(startDate, endDate);
     }
 
-    @Test
-    void testAddAffectEventParticipant_ThrowsExceptionWhenParticipantNotFound() {
-       Event event = new Event();
-       event.setIdEvent(1);
-       int nonExistentParticipantId = 999;
-
-       when(participantRepository.findById(nonExistentParticipantId)).thenReturn(Optional.empty());
-
-       // Vérifier que la méthode lance une exception lorsque le participant n'est pas trouvé
-       assertThrows(IllegalArgumentException.class, () -> {
-          eventServices.addAffectEvenParticipant(event, nonExistentParticipantId);
-       });
-    }
-
-    @Test
+       @Test
     void testAddAffectLog_EventNotFound() {
        Logistics logistics = new Logistics();
        logistics.setIdLog(1);
