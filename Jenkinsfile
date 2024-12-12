@@ -81,7 +81,7 @@ pipeline {
                     }
                 }
 
-    }/*
+    }
     post {
         success {
             // Notify on successful build
@@ -95,5 +95,5 @@ pipeline {
                  subject: "Pipeline Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: "The build has failed. Check it out here: ${env.BUILD_URL}"
         }
-    }*/
+    }
 }
